@@ -1,0 +1,23 @@
+{
+  "name": "cut-out-c2",
+  "version": "0.0.1",
+  "description": "Covert command and control system for Red-Team Operations ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Frichetten/Cut-Out-C2.git"
+  },
+  "author": "Nick Frichette",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Frichetten/Cut-Out-C2/issues"
+  },
+  "homepage": "https://github.com/Frichetten/Cut-Out-C2#readme",
+  "dependencies": {
+    "express": "^4.16.2",
+    "nodemon": "^1.17.1"
+  }
+}
