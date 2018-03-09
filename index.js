@@ -42,7 +42,11 @@ ui.prompt(">> ", function(input) {
   // We now have the input, now let's check what to do with it
   if (input === 's') {
     tools.choose_a_website( function(output)  {
-      console.log(output);
+      console.log();
+      app.get('*', (req, res) => {
+        res.sendFile(path.join(__dirname, 'html/nindex.html'));
+      });
+      console.log("after");
     });
   }
   else if (input === 'c') {
