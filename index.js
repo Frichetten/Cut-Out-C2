@@ -30,16 +30,22 @@ console.log(" #######################################################")
 
 //Detect if we have a non-default html directory nearby
 if (fs.existsSync(path.join(__dirname, './custom-html'))){
-  console.log("Custom HTML Directory Detected!")
+  console.log("Custom HTML Directory Detected!");
 }
 
 // Offer the user choices
-console.log("(c) Clone A Website")
+console.log("(s) Chose A Website To Cloak As");
+console.log("(c) Clone A Website");
 
 // This will take user input
 ui.prompt(">> ", function(input) {
   // We now have the input, now let's check what to do with it
-  if (input === 'c'){
+  if (input === 's') {
+    tools.choose_a_website( function(output)  {
+      console.log(output);
+    });
+  }
+  else if (input === 'c') {
     // Clone A Website
     tools.clone_a_website();
   }
