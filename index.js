@@ -1,14 +1,15 @@
-const express	= require('express')
-const http    	= require('http')
-const path    	= require('path')
-const fs      	= require('fs')
+const express	= require('express');
+const http    	= require('http');
+const path    	= require('path');
+const fs      	= require('fs');
 
-const ui 	= require('./user_interface')
-const tools 	= require('./tools')
+const remove 	= require('./remove_route');
+const ui 	= require('./user_interface');
+const tools 	= require('./tools');
 
 const port = 3000
 
-const app = express()
+var app = express();
 
 app.get('/hidden', (req, res) => {
   res.send("Sup bro? Wanna hack?")
@@ -18,7 +19,7 @@ app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'html/index.html'))
 })
 
-app.listen(port, console.log('Server started on port ' + port))
+app.listen(port, console.log('Server started on port ' + port));
 
 console.log("   _____      _           ____        _      _____ ___  ")
 console.log("  / ____|    | |         / __ \\      | |    / ____|__ \\ ")
@@ -42,11 +43,10 @@ ui.prompt(">> ", function(input) {
   // We now have the input, now let's check what to do with it
   if (input === 's') {
     tools.choose_a_website( function(output)  {
-      console.log();
-      app.get('*', (req, res) => {
-        res.sendFile(path.join(__dirname, 'html/nindex.html'));
+      remove.remove_route(app, '*');
+      app.get('/', (req, res) => {
+        res.sendFile(path.join(__dirname, 'html/'+output+'/index.html'));
       });
-      console.log("after");
     });
   }
   else if (input === 'c') {

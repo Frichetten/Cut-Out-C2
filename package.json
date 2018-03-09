@@ -18,6 +18,8 @@
   "homepage": "https://github.com/Frichetten/Cut-Out-C2#readme",
   "dependencies": {
     "express": "^4.16.2",
-    "nodemon": "^1.17.1"
+    "express-remove-route": "^1.0.0",
+    "nodemon": "^1.17.1",
+    "underscore": "^1.8.3"
   }
 }

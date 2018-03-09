@@ -24,7 +24,7 @@ module.exports = {
       const exec = util.promisify(require('child_process').exec);
       async function ls() {
         const { stdout, stderr } = await exec(
-		'mkdir ./html/' + input + ' && cd ./html/' + input + ' && httrack --footer "" ' + input);
+		'cd ./html/ && wget -mkEpnp ' + input);
 	console.log('stdout:',stdout);
 	console.log('stderr:',stderr);
       }
