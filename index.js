@@ -1,7 +1,10 @@
 const express	= require('express')
-const http    = require('http')
-const path    = require('path')
-const fs      = require('fs')
+const http    	= require('http')
+const path    	= require('path')
+const fs      	= require('fs')
+
+const ui 	= require('./user_interface')
+const tools 	= require('./tools')
 
 const port = 3000
 
@@ -33,4 +36,11 @@ if (fs.existsSync(path.join(__dirname, './custom-html'))){
 // Offer the user choices
 console.log("(c) Clone A Website")
 
-// This will take use input
+// This will take user input
+ui.prompt(">> ", function(input) {
+  // We now have the input, now let's check what to do with it
+  if (input === 'c'){
+    // Clone A Website
+    tools.clone_a_website();
+  }
+});
