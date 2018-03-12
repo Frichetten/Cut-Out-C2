@@ -20,15 +20,15 @@ module.exports = {
 
   clone_a_website: function(){
     ui.prompt("Target URL: ", function(input) {
-      const util = require('util');
-      const exec = util.promisify(require('child_process').exec);
-      async function ls() {
-        const { stdout, stderr } = await exec(
-		'cd ./html/ && wget -mkEpnp ' + input);
-	console.log('stdout:',stdout);
-	console.log('stderr:',stderr);
-      }
-      ls();
+      console.log("This will take a while, please wait");
+      const { spawn } = require('child_process');
+      const child = spawn(
+        'mkdir ./html/'+input+' && cd ./html/'+input+' && httrack ' + input, 
+	{ shell: true });
+      
+      child.on('exit',function(exitCode) {
+        console.log("All Done. In directory ./html/"+input);
+      });
     });
   }
 };

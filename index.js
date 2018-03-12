@@ -44,9 +44,10 @@ ui.prompt(">> ", function(input) {
   if (input === 's') {
     tools.choose_a_website( function(output)  {
       remove.remove_route(app, '*');
-      app.get('/', (req, res) => {
-        res.sendFile(path.join(__dirname, 'html/'+output+'/index.html'));
-      });
+      //app.get('/', (req, res) => {
+      //  res.sendFile(path.join(__dirname, 'html/'+output+'/index.html'));
+      //});
+      app.use('/', express.static('html/'+output+'/'+output))
     });
   }
   else if (input === 'c') {
