@@ -39,19 +39,23 @@ console.log("(s) Chose A Website To Cloak As");
 console.log("(c) Clone A Website");
 
 // This will take user input
-ui.prompt(">> ", function(input) {
-  // We now have the input, now let's check what to do with it
-  if (input === 's') {
-    tools.choose_a_website( function(output)  {
-      remove.remove_route(app, '*');
-      //app.get('/', (req, res) => {
-      //  res.sendFile(path.join(__dirname, 'html/'+output+'/index.html'));
-      //});
-      app.use('/', express.static('html/'+output+'/'+output))
-    });
-  }
-  else if (input === 'c') {
-    // Clone A Website
-    tools.clone_a_website();
-  }
-});
+taking_input = function () {
+  ui.prompt(">> ", function(input) {
+    // We now have the input, now let's check what to do with it
+    if (input === 's') {
+      tools.choose_a_website( function(output)  {
+        remove.remove_route(app, '*');
+        app.use('/', express.static('html/'+output+'/'+output))
+      });
+    }
+    else if (input === 'c') {
+      // Clone A Website
+      tools.clone_a_website();
+    }
+    else if (input === 'd') {
+      console.log("DD");
+    }
+    taking_input();
+  });
+}
+taking_input();

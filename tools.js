@@ -23,9 +23,9 @@ module.exports = {
       console.log("This will take a while, please wait");
       const { spawn } = require('child_process');
       const child = spawn(
-        'mkdir ./html/'+input+' && cd ./html/'+input+' && httrack ' + input, 
+        'mkdir ./html/'+input+' && cd ./html/'+input+' && httrack ' + input,
 	{ shell: true });
-      
+
       child.on('exit',function(exitCode) {
         console.log("All Done. In directory ./html/"+input);
       });
